@@ -1,6 +1,6 @@
 {
   "name": "facerecognitionbrain",
-  "homepage": "https://DevShrimali.github.io/facerecognitionbrain",
+  "homepage": "https://devshrimali.github.io/facerecognitionbrain",
   "private": true,
   "dependencies": {
     "clarifai": "^2.5.0",
