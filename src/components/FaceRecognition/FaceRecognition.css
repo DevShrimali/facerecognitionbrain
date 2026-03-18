@@ -1,0 +1,110 @@
+.fr-container {
+  animation: fadeIn 0.4s ease;
+}
+
+.fr-image-wrap {
+  position: relative;
+  display: inline-block;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.fr-image {
+  display: block;
+  max-width: 620px;
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - 180px);
+  object-fit: contain;
+}
+
+/* ===== SCANNING ANIMATION ===== */
+.fr-scan-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Sweeping laser line */
+.fr-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(139, 92, 246, 0.3) 20%,
+    #8b5cf6 50%,
+    rgba(139, 92, 246, 0.3) 80%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 20px rgba(139, 92, 246, 0.5),
+    0 0 60px rgba(139, 92, 246, 0.2);
+  animation: scanDown 1.8s ease-in-out infinite;
+}
+
+@keyframes scanDown {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Subtle grid overlay */
+.fr-scan-grid {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ===== BOUNDING BOX ===== */
+.fr-box {
+  position: absolute;
+  border: 1.5px solid rgba(139, 92, 246, 0.5);
+  border-radius: 3px;
+  animation: boxAppear 0.35s ease-out;
+  z-index: 10;
+}
+
+@keyframes boxAppear {
+  from { opacity: 0; transform: scale(1.06); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Corners */
+.fr-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #8b5cf6;
+  border-style: solid;
+}
+.fr-c-tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.fr-c-tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+.fr-c-bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+.fr-c-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+/* Face ID Tag */
+.fr-tag {
+  position: absolute;
+  top: -10px;
+  left: -1px;
+  background: #8b5cf6;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px 3px 0 0;
+  letter-spacing: 0.5px;
+}

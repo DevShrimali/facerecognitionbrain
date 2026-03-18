@@ -1,24 +1,27 @@
 import React from 'react';
+import './Navigation.css';
 
-const Navigation= ({ onRouteChange, isSignedIn }) => {
-	
-		if(isSignedIn) {
-			return (
-			<nav style={{display: 'flex', justifyContent: 'flex-end'}}>
-			<p onClick={() => onRouteChange('signout')} className= 'f3 link dim black underline pa3 pointer'>Sign Out</p>
-			</nav>
-			);
-		}
-		else {
-			return (
-			<nav style={{display: 'flex', justifyContent: 'flex-end'}}>
-			<p onClick={() => onRouteChange('signin')} className= 'f3 link dim black underline pa3 pointer'>Sign In</p>
-			<p onClick={() => onRouteChange('register')} className= 'f3 link dim black underline pa3 pointer'>Register</p>
-			</nav>
-			);
-		}
-		
-		
-}
+const Navigation = ({ modelsLoaded }) => {
+  return (
+    <nav className='nav'>
+      <div className='nav-inner'>
+        <div className='nav-left'>
+          <div className='nav-brand'>
+            <div className='nav-icon'>🧠</div>
+            <span className='nav-name'>SmartBrain</span>
+          </div>
+          <div className='nav-divider'></div>
+          <span className='nav-page'>Workspace</span>
+        </div>
+        <div className='nav-right'>
+          <div className={`nav-status ${modelsLoaded ? 'nav-status-ready' : ''}`}>
+            <span className='nav-status-dot'></span>
+            <span className='nav-status-text'>{modelsLoaded ? 'Models Ready' : 'Loading...'}</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
 export default Navigation;

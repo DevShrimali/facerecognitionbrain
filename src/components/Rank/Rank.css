@@ -1,0 +1,31 @@
+.rank-container {
+  text-align: center;
+  padding: 8px 0 20px;
+  animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.rank-greeting {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 8px;
+}
+
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.1));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 12px;
+  padding: 6px 20px;
+}
+
+.rank-number {
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #c4b5fd, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

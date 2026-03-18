@@ -1,36 +1,86 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './Register.css';
 
 const Register = ({ onRouteChange }) => {
-	return (
-		<article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
-		<main className="pa4 black-80">
-		  <div className="measure">
-		    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-		      <legend className="f1 fw6 ph0 mh0">Register</legend>
-		      <div className="mt3">
-		        <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
-		        <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name"  id="name"/>
-		      </div>
-		      <div className="mt3">
-		        <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-		        <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"/>
-		      </div>
-		      <div className="mv3">
-		        <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-		        <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password"/>
-		      </div>
-		    </fieldset>
-		    <div className="">
-		      <input 
-		      onClick={() => onRouteChange('home')}
-		      className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-		      type="submit" 
-		      value="Register"/>
-		    </div>
-		  </div>
-		</main>
-		</article>
-		);
-}
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  return (
+    <div className='auth-container'>
+      <div className='auth-card'>
+        <div className='auth-header'>
+          <div className='auth-icon'>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="8.5" cy="7" r="4"/>
+              <line x1="20" y1="8" x2="20" y2="14"/>
+              <line x1="23" y1="11" x2="17" y2="11"/>
+            </svg>
+          </div>
+          <h2 className='auth-title'>Create account</h2>
+          <p className='auth-subtitle'>Get started with face detection for free</p>
+        </div>
+
+        <div className='auth-form'>
+          <div className='input-group'>
+            <label className='input-label' htmlFor='register-name'>Name</label>
+            <input
+              className='input-field'
+              type='text'
+              id='register-name'
+              placeholder='Your name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className='input-group'>
+            <label className='input-label' htmlFor='register-email'>Email</label>
+            <input
+              className='input-field'
+              type='email'
+              id='register-email'
+              placeholder='you@example.com'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className='input-group'>
+            <label className='input-label' htmlFor='register-password'>Password</label>
+            <input
+              className='input-field'
+              type='password'
+              id='register-password'
+              placeholder='••••••••'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <button
+            className='auth-submit-btn'
+            onClick={() => onRouteChange('home')}
+          >
+            Create Account
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+        </div>
+
+        <div className='auth-footer'>
+          <span className='auth-footer-text'>Already have an account?</span>
+          <button
+            onClick={() => onRouteChange('signin')}
+            className='auth-footer-link'
+          >
+            Sign In
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Register;

@@ -1,35 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './Signin.css';
 
 const Signin = ({ onRouteChange }) => {
-	return (
-		<article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
-		<main className="pa4 black-80">
-		  <div className="measure">
-		    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-		      <legend className="f1 fw6 ph0 mh0">Sign In</legend>
-		      <div className="mt3">
-		        <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-		        <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"/>
-		      </div>
-		      <div className="mv3">
-		        <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-		        <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password"/>
-		      </div>
-		    </fieldset>
-		    <div className="">
-		      <input 
-		      onClick={() => onRouteChange('home')}
-		      className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-		      type="submit" 
-		      value="Sign in"/>
-		    </div>
-		    <div className="lh-copy mt3">
-		      <p onClick={() => onRouteChange('register')} href="#0" className="f6 link dim black db pointer">Register</p>
-		    </div>
-		  </div>
-		</main>
-		</article>
-		);
-}
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  return (
+    <div className='auth-container'>
+      <div className='auth-card'>
+        <div className='auth-header'>
+          <div className='auth-icon'>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+              <polyline points="10 17 15 12 10 7"/>
+              <line x1="15" y1="12" x2="3" y2="12"/>
+            </svg>
+          </div>
+          <h2 className='auth-title'>Welcome back</h2>
+          <p className='auth-subtitle'>Sign in to continue detecting faces</p>
+        </div>
+
+        <div className='auth-form'>
+          <div className='input-group'>
+            <label className='input-label' htmlFor='signin-email'>Email</label>
+            <input
+              className='input-field'
+              type='email'
+              id='signin-email'
+              placeholder='you@example.com'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className='input-group'>
+            <label className='input-label' htmlFor='signin-password'>Password</label>
+            <input
+              className='input-field'
+              type='password'
+              id='signin-password'
+              placeholder='••••••••'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <button
+            className='auth-submit-btn'
+            onClick={() => onRouteChange('home')}
+          >
+            Sign In
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+        </div>
+
+        <div className='auth-footer'>
+          <span className='auth-footer-text'>Don't have an account?</span>
+          <button
+            onClick={() => onRouteChange('register')}
+            className='auth-footer-link'
+          >
+            Register
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Signin;

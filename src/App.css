@@ -1,17 +1,302 @@
 .App {
-  text-align: center;
+  min-height: 100vh;
+  background: #09090b;
+  position: relative;
 }
 
-.center {
-  display: flex;
-  justify-content:center;
+.App::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .particles {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  position: fixed !important;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Workspace */
+.workspace {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero / Empty State */
+.hero-section {
+  text-align: center;
+  padding: 80px 0 32px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #a78bfa;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+.hero-title {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Models Loading */
+.models-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 0;
+}
+
+.models-loading-bar {
+  width: 160px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.models-loading-bar::after {
+  content: '';
+  display: block;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6, #8b5cf6);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease infinite;
+  border-radius: 2px;
+}
+
+.models-loading-text {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 12px;
+}
+
+/* Detecting */
+.detecting-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  margin: 12px auto;
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  border-radius: 50px;
+  width: fit-content;
+  animation: fadeIn 0.3s ease;
+}
+
+.detecting-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(139, 92, 246, 0.2);
+  border-top-color: #8b5cf6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.detecting-text {
+  color: #a78bfa;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Results Workspace */
+.results-workspace {
+  padding: 12px 0 20px;
+  animation: fadeIn 0.4s ease;
+}
+
+.results-split {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 32px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.results-image-section {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.results-panel-section {
+  position: sticky;
+  top: 72px;
+}
+
+@media (max-width: 960px) {
+  .results-split {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+
+  .results-panel-section {
+    position: static;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+}
+
+/* ===== SKELETON LOADING ===== */
+.skeleton-panel {
+  animation: fadeIn 0.3s ease;
+}
+
+.skeleton-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.skeleton-line {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  width: 100%;
+  animation: shimmer 1.5s ease infinite;
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+}
+
+.skeleton-sm { height: 8px; margin-top: 6px; }
+.skeleton-w40 { width: 40%; }
+.skeleton-w60 { width: 60%; }
+
+.skeleton-badge {
+  width: 60px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  animation: shimmer 1.5s ease infinite;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+}
+
+.skeleton-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.skeleton-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.skeleton-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+  animation: shimmer 1.5s ease infinite;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+}
+
+.skeleton-card-meta {
+  flex: 1;
+}
+
+.skeleton-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.skeleton-bar {
+  height: 4px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skeleton-bar::after {
+  content: '';
+  position: absolute;
   left: 0;
-  z-index: -1;
+  top: 0;
+  height: 100%;
+  width: 40%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.1));
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease infinite;
+}
+
+/* ===== FOOTER CREDIT ===== */
+.app-footer {
+  text-align: center;
+  padding: 32px 0 20px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.app-footer a {
+  color: rgba(139, 92, 246, 0.5);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.app-footer a:hover {
+  color: #8b5cf6;
 }

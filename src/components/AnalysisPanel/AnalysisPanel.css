@@ -1,0 +1,147 @@
+.ap-container {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.ap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.ap-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: -0.2px;
+}
+
+.ap-count {
+  font-size: 12px;
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.ap-faces {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Face Card */
+.ap-face-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.ap-face-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(139, 92, 246, 0.15);
+}
+
+.ap-face-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.ap-face-avatar {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.ap-face-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ap-face-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ap-face-conf {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Stats */
+.ap-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ap-stat {
+  position: relative;
+}
+
+.ap-stat-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.ap-stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 400;
+}
+
+.ap-stat-value {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.ap-stat-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.ap-stat-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.ap-fill-age {
+  background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+}
+
+.ap-fill-gender {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+.ap-fill-expr {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.ap-stat-percent {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 3px;
+  display: block;
+  text-align: right;
+}
